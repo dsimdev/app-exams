@@ -1,1 +1,26 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary">
+  <a
+    [routerLink]="'/'"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu_books</mat-icon>
+  </a>
+  <span>Exams portal</span>
+  <span class="example-spacer"></span>
+  <a
+    [routerLink]="'/login'"
+    mat-icon-button
+    class="example-icon favourite-icon"
+    aria-label="Example icon-button with heart icon"
+    >Login
+  </a>
+  <a
+    [routerLink]="'/signup'"
+    mat-icon-button
+    class="example-icon favourite-icon mr20 ml50"
+    aria-label="Example icon-button with heart icon"
+    >Signup
+  </a>
+</mat-toolbar>
