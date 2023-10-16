@@ -10,6 +10,7 @@
   <span>Exams portal</span>
   <span class="example-spacer"></span>
   <a
+    *ngIf="!loginService.isLoggedIn()"
     [routerLink]="'/login'"
     mat-icon-button
     class="example-icon favourite-icon"
@@ -17,10 +18,28 @@
     >Login
   </a>
   <a
+    *ngIf="!loginService.isLoggedIn()"
     [routerLink]="'/signup'"
     mat-icon-button
     class="example-icon favourite-icon mr20 ml50"
     aria-label="Example icon-button with heart icon"
     >Signup
   </a>
+  <a
+    *ngIf="loginService.isLoggedIn()"
+    (click)="logout()"
+    mat-icon-button
+    class="example-icon favourite-icon"
+    aria-label="Example icon-button with heart icon"
+    >Logout
+  </a>
+  <button
+    *ngIf="loginService.isLoggedIn()"
+    mat-button
+    style="margin-right: 10px"
+    class="example-icon favourite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    {{ loginService.getUser().username }}
+  </button>
 </mat-toolbar>

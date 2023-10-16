@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import baseUrl from './helper';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
+  public loginStatusSubject = new Subject<boolean>();
+
   constructor(private http: HttpClient) {}
 
   public generateToken(loginData: any) {
@@ -51,7 +54,10 @@ export class LoginService {
 
   public getUserRoles() {
     let user = this.getUser();
-    return user.authorities;
+    return user.authorities[0].authority;
   }
 
+  public getCurrentUser() {
+    return this.http.get(`${baseUrl}/auth/active-user`);
+  }
 }
