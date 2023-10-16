@@ -23,7 +23,6 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {}
 
   formSubmit() {
-    console.log(this.user);
     if (this.user.username == '' || this.user.username == null) {
       this.snack.open('Username is required', 'OK', {
         duration: 3000,
@@ -35,11 +34,9 @@ export class SignupComponent implements OnInit {
 
     this.userService.addUser(this.user).subscribe(
       (data) => {
-        console.log(data);
         Swal.fire('User saved', 'User registered successfully', 'success');
       },
       (error) => {
-        console.log(error);
         Swal.fire('¡ERROR!', 'An error has ocurred', 'error');
       }
     );
