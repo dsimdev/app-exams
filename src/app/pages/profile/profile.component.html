@@ -1,1 +1,55 @@
-<p>profile works!</p>
+<mat-card>
+  <h1><mat-icon mat-list-icon>account_circle</mat-icon> Profile</h1>
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="text-center">
+          <img
+            src="../../../assets/images/user.png"
+            alt=""
+            class="profile-image {{
+              user.enabled == 1 ? 'active' : 'suspended'
+            }}"
+          />
+          <h1 class="mt20">{{ user.name }} {{ user.lastName }}</h1>
+        </div>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <table class="table text-center">
+              <tr>
+                <td>ID</td>
+                <td>{{ user.userId }}</td>
+              </tr>
+              <tr>
+                <td>Username</td>
+                <td>{{ user.username | titlecase }}</td>
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>{{ user.email }}</td>
+              </tr>
+              <tr>
+                <td>Phone</td>
+                <td>{{ user.phone }}</td>
+              </tr>
+              <tr>
+                <td>Role</td>
+                <td>{{ user.authorities[0].authority }}</td>
+              </tr>
+              <tr>
+                <td>Status</td>
+                <td class="{{ user.enabled == 1 ? 'active' : 'suspended' }}">
+                  {{ user.enabled == 1 ? "Active" : "Suspended" }}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-card-actions class="text-center">
+      <button mat-raised-button color="primary">Update</button>
+      <button class="ml20" mat-raised-button color="accent">Share</button>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>

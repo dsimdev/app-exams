@@ -55,3 +55,7 @@ body {
 .ml70 {
   margin-left: 70px !important;
 }
+
+.w100 {
+  width: 100% !important;
+}

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="mb20">
   <a
     [routerLink]="'/'"
     mat-icon-button
@@ -25,21 +25,14 @@
     aria-label="Example icon-button with heart icon"
     >Signup
   </a>
-  <a
-    *ngIf="loginService.isLoggedIn()"
-    (click)="logout()"
-    mat-icon-button
-    class="example-icon favourite-icon"
-    aria-label="Example icon-button with heart icon"
-    >Logout
-  </a>
   <button
     *ngIf="loginService.isLoggedIn()"
     mat-button
+    routerLink="/dashboard-admin/profile"
     style="margin-right: 10px"
     class="example-icon favourite-icon"
     aria-label="Example icon-button with heart icon"
   >
-    {{ loginService.getUser().username }}
+    {{ loginService.getUser().username | titlecase }}
   </button>
 </mat-toolbar>

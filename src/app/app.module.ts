@@ -28,6 +28,13 @@ import { DashboardAdminComponent } from './pages/admin/dashboard-admin/dashboard
 import { DashboardUserComponent } from './pages/user/dashboard-user/dashboard-user.component';
 import { SidebarAdminComponent } from './pages/admin/sidebar-admin/sidebar-admin.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewExamsComponent } from './pages/admin/view-exams/view-exams.component';
+import { AddExamComponent } from './pages/admin/add-exam/add-exam.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -40,6 +47,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
     DashboardUserComponent,
     SidebarAdminComponent,
     ProfileComponent,
+    WelcomeComponent,
+    ViewCategoriesComponent,
+    AddCategoryComponent,
+    ViewExamsComponent,
+    AddExamComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +67,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    MatSlideToggleModule,
+    MatSelectModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
