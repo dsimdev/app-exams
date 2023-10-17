@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { LoginService } from './../../../services/login.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +13,19 @@ export class SidebarAdminComponent implements OnInit {
   ngOnInit(): void {}
 
   public logout() {
-    this.loginService.logout();
-    window.location.reload();
+    Swal.fire({
+      title: 'Logout',
+      text: 'Are you sure you want to logout?',
+      showCancelButton: true,
+      cancelButtonText: 'Cancel',
+      cancelButtonColor: 'red',
+      confirmButtonText: 'Confirm',
+      confirmButtonColor: 'blue',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.loginService.logout();
+        window.location.reload();
+      }
+    });
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import baseUrl from './helper';
+import { authUrl } from './helper';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   public generateToken(loginData: any) {
-    return this.http.post(`${baseUrl}/auth/generate-token`, loginData);
+    return this.http.post(`${authUrl}/generate-token`, loginData);
   }
 
   public loginUser(token: any) {
@@ -58,6 +58,6 @@ export class LoginService {
   }
 
   public getCurrentUser() {
-    return this.http.get(`${baseUrl}/auth/active-user`);
+    return this.http.get(`${authUrl}/active-user`);
   }
 }

@@ -8,15 +8,30 @@
     </mat-card-header>
     <mat-card-content>
       <mat-card-actions>
-        <button mat-flat-button color="primary">Start</button>
+        <button
+          [routerLink]="
+            '/dashboard-admin/questions/' + e.examId + '/' + e.title
+          "
+          mat-flat-button
+          color="primary"
+        >
+          Questions
+        </button>
         <button mat-stroked-button color="primary" class="ml20">
           Max Points: {{ e.maxPoints }}
         </button>
         <button mat-stroked-button color="primary" class="ml20">
           Questions: {{ e.cantQuestions }}
         </button>
-        <button mat-flat-button color="primary" class="ml20">Update</button>
-        <button mat-flat-button color="primary" class="ml20">Tries</button>
+        <button mat-stroked-button color="primary" class="ml20">Tries</button>
+        <button
+          [routerLink]="'/dashboard-admin/exams/' + e.examId"
+          mat-flat-button
+          color="primary"
+          class="ml20"
+        >
+          Update
+        </button>
         <button
           mat-flat-button
           color="warn"

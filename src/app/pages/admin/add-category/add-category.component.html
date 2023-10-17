@@ -1,5 +1,17 @@
 <mat-card>
-  <h1><mat-icon mat-list-icon>add_circle_outline</mat-icon> Add Category</h1>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>
+        <mat-icon mat-list-icon>add_circle_outline</mat-icon> Add Category
+      </h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button (click)="cancel()" mat-stroked-button color="accent">
+        Go Back
+      </button>
+    </div>
+  </div>
+
   <mat-card-content>
     <div class="bootstrap-wrapper">
       <div class="container">
@@ -30,15 +42,19 @@
                 ></textarea>
               </mat-form-field>
               <div class="container text-center mt15">
-                <button mat-raised-button color="primary">Create</button>
-                <button
-                  class="ml20"
-                  type="reset"
-                  mat-raised-button
-                  color="accent"
-                >
-                  Clear
-                </button>
+                <div class="row">
+                  <div class="col-md-12">
+                    <button mat-raised-button color="primary">Create</button>
+                    <button
+                      class="ml20"
+                      type="reset"
+                      mat-raised-button
+                      color="accent"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
               </div>
             </form>
           </div>

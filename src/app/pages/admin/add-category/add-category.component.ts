@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryService } from './../../../services/category.service';
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-category',
@@ -18,7 +19,8 @@ export class AddCategoryComponent implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private snack: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {}
@@ -48,5 +50,9 @@ export class AddCategoryComponent implements OnInit {
         );
       }
     );
+  }
+
+  cancel() {
+    this.location.back();
   }
 }

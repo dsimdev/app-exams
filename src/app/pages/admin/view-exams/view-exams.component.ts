@@ -30,11 +30,11 @@ export class ViewExamsComponent implements OnInit {
   deleteExam(examId: any) {
     Swal.fire({
       title: 'Delete exam',
-      text: 'Are you sure?',
+      text: `Are you sure you want to delete this exam?`,
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: 'd33',
+      confirmButtonColor: 'blue',
+      cancelButtonColor: 'red',
       confirmButtonText: 'Delete',
       cancelButtonText: 'Cancel',
     }).then(

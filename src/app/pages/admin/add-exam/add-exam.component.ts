@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { ExamService } from './../../../services/exam.service';
 import { CategoryService } from './../../../services/category.service';
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-exam',
@@ -13,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class AddExamComponent implements OnInit {
   categories: any = [];
 
-  examData = {
+  exam = {
     title: '',
     description: '',
     maxPoints: '',
@@ -28,7 +29,8 @@ export class AddExamComponent implements OnInit {
     private categoryService: CategoryService,
     private snack: MatSnackBar,
     private examService: ExamService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -49,8 +51,8 @@ export class AddExamComponent implements OnInit {
   }
 
   saveExam() {
-    console.log(this.examData);
-    if (this.examData.title.trim() == '' || this.examData.title == null) {
+    console.log(this.exam);
+    if (this.exam.title.trim() == '' || this.exam.title == null) {
       this.snack.open('The title is required', 'OK', {
         duration: 3000,
         verticalPosition: 'top',
@@ -59,7 +61,7 @@ export class AddExamComponent implements OnInit {
       return;
     }
 
-    this.examService.createExam(this.examData).subscribe(
+    this.examService.createExam(this.exam).subscribe(
       (data) => {
         console.log(data);
         Swal.fire(
@@ -67,7 +69,7 @@ export class AddExamComponent implements OnInit {
           'The exam was created successfully',
           'success'
         );
-        this.examData = {
+        this.exam = {
           title: '',
           description: '',
           maxPoints: '',
@@ -88,5 +90,9 @@ export class AddExamComponent implements OnInit {
         );
       }
     );
+  }
+
+  cancel() {
+    this.location.back();
   }
 }

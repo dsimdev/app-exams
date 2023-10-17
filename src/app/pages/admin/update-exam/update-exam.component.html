@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8">
       <h1>
-        <mat-icon mat-list-icon>add</mat-icon> Add Exam
+        <mat-icon mat-list-icon>add</mat-icon> Update Question
       </h1>
     </div>
     <div class="col-md-4 text-right">
@@ -14,7 +14,7 @@
   <mat-card-content>
     <div class="row">
       <div class="col-md-8 offset-md-2">
-        <form (ngSubmit)="saveExam()">
+        <form *ngIf="exam" (submit)="updateExam()">
           <mat-form-field class="w100" appearance="fill">
             <mat-label>Title</mat-label>
             <input
@@ -76,10 +76,7 @@
           </mat-slide-toggle>
           <mat-form-field appearance="fill" class="mt20 w100">
             <mat-label>Categories</mat-label>
-            <mat-select
-              name="category"
-              [(ngModel)]="exam.category.categoryId"
-            >
+            <mat-select name="category" [(ngModel)]="exam.category.categoryId">
               <mat-option *ngFor="let c of categories" [value]="c.categoryId">
                 {{ c.title }}
               </mat-option>
@@ -89,7 +86,7 @@
           <div class="container text-center">
             <div class="row">
               <div class="col-md-12">
-                <button mat-raised-button color="primary">Add</button>
+                <button mat-raised-button color="primary">Update</button>
                 <button
                   type="reset"
                   mat-raised-button
@@ -97,6 +94,14 @@
                   class="ml20"
                 >
                   Clear
+                </button>
+                <button
+                  mat-flat-button
+                  color="warn"
+                  class="ml20"
+                  (click)="deleteExam(exam.examId)"
+                >
+                  Delete
                 </button>
               </div>
             </div>

@@ -1,0 +1,89 @@
+<mat-card>
+  <div class="row">
+    <div class="col-md-8">
+      <h1><mat-icon mat-list-icon>add</mat-icon> [{{ title }}] Question</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button (click)="cancel()" mat-stroked-button color="accent">
+        Go Back
+      </button>
+    </div>
+  </div>
+  <div class="bootstrap-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="container text-center">
+          <button
+            [routerLink]="
+              '/dashboard-admin/add-question/' + examId + '/' + title
+            "
+            mat-raised-button
+            color="primary"
+          >
+            Add Question
+          </button>
+        </div>
+        <mat-card *ngFor="let q of questions; let i = index" class="mt20">
+          <mat-card-content>
+            <p>
+              <b>{{ i + 1 }})</b>
+              <span class="ml20" [innerHTML]="q.content"></span>
+            </p>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6">
+                  <p>
+                    1)<b> {{ q.option1 }}</b>
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <p>
+                    2)<b> {{ q.option2 }}</b>
+                  </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p>
+                    3)<b> {{ q.option3 }}</b>
+                  </p>
+                </div>
+                <div class="col-md-6">
+                  <p>
+                    4)<b> {{ q.option4 }}</b>
+                  </p>
+                </div>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="mt20">
+                <b
+                  ><p class="greenText">{{ q.answer }}</p></b
+                >
+              </div>
+            </div>
+          </mat-card-content>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <button
+                  mat-button
+                  color="primary"
+                  [routerLink]="'/dashboard-admin/questions/' + q.questionId"
+                >
+                  Update
+                </button>
+                <button
+                  mat-button
+                  color="warn"
+                  (click)="deleteQuestion(q.questionId)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</mat-card>
