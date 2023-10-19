@@ -1,0 +1,67 @@
+<mat-card>
+  <div class="row">
+    <div class="col-md-8">
+      <h1><mat-icon mat-list-icon>category</mat-icon> Update Category</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button (click)="cancel()" mat-stroked-button color="accent">
+        Go Back
+      </button>
+    </div>
+  </div>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form *ngIf="category" (submit)="updateCategory()">
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Title</mat-label>
+            <input
+              required
+              autofocus
+              [(ngModel)]="category.title"
+              type="text"
+              matInput
+              placeholder="Enter the title"
+              name="title"
+            />
+          </mat-form-field>
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea
+              [(ngModel)]="category.description"
+              type="text"
+              matInput
+              placeholder="Enter the description"
+              name="description"
+              rows="8"
+            ></textarea>
+          </mat-form-field>
+
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-md-12">
+                <button mat-raised-button color="primary">Update</button>
+                <button
+                  type="reset"
+                  mat-raised-button
+                  color="accent"
+                  class="ml20"
+                >
+                  Clear
+                </button>
+                <button
+                  mat-flat-button
+                  color="warn"
+                  class="ml20"
+                  (click)="deleteCategory(category.categoryId)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

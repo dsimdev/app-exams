@@ -27,4 +27,8 @@ export class QuestionService {
   public getQuestion(questionId: any) {
     return this.http.get(`${appUrl}/questions/${questionId}`);
   }
+
+  public evaluateExam(questions: any) {
+    return this.http.post(`${appUrl}/questions/evaluate-exam`, questions);
+  }
 }

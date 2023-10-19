@@ -1,10 +1,23 @@
 <mat-card>
   <h1><mat-icon mat-list-icon>quiz</mat-icon> Exams</h1>
+  <mat-card-subtitle> Count: {{ exams.length }} </mat-card-subtitle>
   <mat-card *ngFor="let e of exams" class="mt20">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title> {{ e.title }} </mat-card-title>
-      <mat-card-subtitle> {{ e.category.title }} </mat-card-subtitle>
+      <mat-card-title>
+        {{ e.title }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ e.category.title }} | Status:
+        <span
+          [ngClass]="{
+            'active-button': e.enabled,
+            'disabled-button': !e.enabled
+          }"
+        >
+          {{ e.enabled ? "ON" : "OFF" }}
+        </span>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <mat-card-actions>
@@ -14,6 +27,7 @@
           "
           mat-flat-button
           color="primary"
+          class="ml20"
         >
           Questions
         </button>

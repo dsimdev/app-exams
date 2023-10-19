@@ -1,0 +1,77 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title> Read the instructions carefully </mat-card-title>
+            <mat-card-subtitle>
+              We are going to start in a few moments
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title class="ml20">
+                {{ exam.title }}
+                <mat-card-subtitle>
+                  <p>{{ exam.description }}</p>
+                </mat-card-subtitle>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <br />
+            <mat-card-content>
+              <mat-card-header>
+                <mat-card-title>Important instructions</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <ul>
+                  <li>This exam is only for practice</li>
+                  <li>
+                    Time limit:
+                    <b>{{ (exam.cantQuestions * 60) / 1000 }} minutes</b>
+                  </li>
+                  <li>Tries limit: <b>Unlimited</b></li>
+                  <li>
+                    Points x Question:
+                    <b>{{ exam.maxPoints / exam.cantQuestions }}</b>
+                  </li>
+                </ul>
+              </mat-card-content>
+              <mat-divider></mat-divider>
+              <br />
+              <mat-card-header>
+                <mat-card-title>Test tries</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <ul>
+                  <li>Click <b>start</b> button to initialize the exam</li>
+                  <li>The time starts at the moment you realize the click</li>
+                  <li>
+                    You can't restart the exam if it's interrupted by any issue
+                  </li>
+                  <li>Scroll down to continue with the next question</li>
+                  <li>Click <b>send</b> button to end the exam</li>
+                  <li>You'll recieve a copy of your exam in PDF format</li>
+                </ul>
+              </mat-card-content>
+            </mat-card-content>
+          </mat-card>
+          <mat-card-actions class="text-center mb20">
+            <button
+              (click)="startExam()"
+              class=""
+              mat-stroked-button
+              color="primary"
+            >
+              Start Exam
+            </button>
+            <button (click)="cancel()" mat-stroked-button color="accent">
+              Go Back
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

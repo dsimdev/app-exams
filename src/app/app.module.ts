@@ -18,12 +18,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // COMPONENTS
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
 import { DashboardAdminComponent } from './pages/admin/dashboard-admin/dashboard-admin.component';
 import { DashboardUserComponent } from './pages/user/dashboard-user/dashboard-user.component';
 import { SidebarAdminComponent } from './pages/admin/sidebar-admin/sidebar-admin.component';
@@ -39,6 +39,13 @@ import { UpdateExamComponent } from './pages/admin/update-exam/update-exam.compo
 import { ViewExamQuestionComponent } from './pages/admin/view-exam-question/view-exam-question.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { SidebarUserComponent } from './pages/user/sidebar-user/sidebar-user.component';
+import { LoadExamComponent } from './pages/user/load-exam/load-exam.component';
+import { WelcomeUserComponent } from './pages/user/welcome-user/welcome-user.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StarExamComponent } from './pages/user/star-exam/star-exam.component';
+import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -46,7 +53,6 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     NavbarComponent,
     SignupComponent,
     LoginComponent,
-    HomeComponent,
     DashboardAdminComponent,
     DashboardUserComponent,
     SidebarAdminComponent,
@@ -60,6 +66,12 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     ViewExamQuestionComponent,
     AddQuestionComponent,
     UpdateQuestionComponent,
+    SidebarUserComponent,
+    LoadExamComponent,
+    WelcomeUserComponent,
+    InstructionsComponent,
+    StarExamComponent,
+    UpdateCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +89,11 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     MatListModule,
     MatSlideToggleModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    }),
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

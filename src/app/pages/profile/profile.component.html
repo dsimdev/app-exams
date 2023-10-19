@@ -11,7 +11,9 @@
               user.enabled == 1 ? 'active' : 'suspended'
             }}"
           />
-          <h1 class="mt20">{{ user.name }} {{ user.lastName }}</h1>
+          <h1 class="mt20">
+            {{ user.name | titlecase }} {{ user.lastName | titlecase }}
+          </h1>
         </div>
         <div class="row">
           <div class="col-md-10 offset-md-1">
@@ -22,7 +24,7 @@
               </tr>
               <tr>
                 <td>Username</td>
-                <td>{{ user.username | titlecase }}</td>
+                <td>{{ user.username }}</td>
               </tr>
               <tr>
                 <td>Email</td>
@@ -48,7 +50,14 @@
       </div>
     </div>
     <mat-card-actions class="text-center">
-      <button mat-raised-button color="primary">Update</button>
+      <!-- <button
+        [routerLink]="'/dashboard-admin/profile/' + user.userId"
+        mat-flat-button
+        color="primary"
+        class="ml20"
+      >
+        Update
+      </button> -->
       <button class="ml20" mat-raised-button color="accent">Share</button>
     </mat-card-actions>
   </mat-card-content>

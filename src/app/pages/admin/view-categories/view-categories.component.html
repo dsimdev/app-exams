@@ -1,5 +1,6 @@
 <mat-card>
   <h1><mat-icon mat-list-icon>list</mat-icon> Categories</h1>
+  <mat-card-subtitle> Count: {{ categories.length }} </mat-card-subtitle>
   <mat-card-content>
     <div class="bootstrap-wrapper">
       <div class="container">
@@ -9,6 +10,22 @@
             <mat-icon mat-list-icon>category</mat-icon>
             <div mat-line>{{ c.title }}</div>
             <div mat-line>{{ c.description }}</div>
+            <button
+              [routerLink]="'/dashboard-admin/categories/' + c.categoryId"
+              mat-flat-button
+              color="primary"
+              class="ml20"
+            >
+              Update
+            </button>
+            <button
+              mat-flat-button
+              color="warn"
+              class="ml20"
+              (click)="deleteExam(c.categoryId)"
+            >
+              Delete
+            </button>
             <mat-divider></mat-divider>
           </mat-list-item>
         </mat-list>

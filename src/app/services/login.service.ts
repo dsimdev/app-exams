@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -9,7 +10,7 @@ import { authUrl } from './helper';
 export class LoginService {
   public loginStatusSubject = new Subject<boolean>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   public generateToken(loginData: any) {
     return this.http.post(`${authUrl}/generate-token`, loginData);
@@ -31,6 +32,7 @@ export class LoginService {
   public logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.router.navigate(['login']);
     return true;
   }
 

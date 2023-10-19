@@ -2,6 +2,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,11 @@ export class SignupComponent implements OnInit {
     phone: '',
   };
 
-  constructor(private userService: UserService, private snack: MatSnackBar) {}
+  constructor(
+    private userService: UserService,
+    private snack: MatSnackBar,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {}
 
@@ -40,5 +45,9 @@ export class SignupComponent implements OnInit {
         Swal.fire('¡ERROR!', 'An error has ocurred', 'error');
       }
     );
+  }
+
+  cancel() {
+    this.location.back();
   }
 }

@@ -11,14 +11,6 @@
   <span class="example-spacer"></span>
   <a
     *ngIf="!loginService.isLoggedIn()"
-    [routerLink]="'/login'"
-    mat-icon-button
-    class="example-icon favourite-icon"
-    aria-label="Example icon-button with heart icon"
-    >Login
-  </a>
-  <a
-    *ngIf="!loginService.isLoggedIn()"
     [routerLink]="'/signup'"
     mat-icon-button
     class="example-icon favourite-icon mr20 ml50"

@@ -1,3 +1,8 @@
+import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
+import { StarExamComponent } from './pages/user/star-exam/star-exam.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { WelcomeUserComponent } from './pages/user/welcome-user/welcome-user.component';
+import { LoadExamComponent } from './pages/user/load-exam/load-exam.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { ViewExamQuestionComponent } from './pages/admin/view-exam-question/view-exam-question.component';
@@ -12,7 +17,6 @@ import { AdminGuard } from './services/admin.guard';
 import { UserGuard } from './services/user.guard';
 import { DashboardUserComponent } from './pages/user/dashboard-user/dashboard-user.component';
 import { DashboardAdminComponent } from './pages/admin/dashboard-admin/dashboard-admin.component';
-import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NgModule } from '@angular/core';
@@ -21,7 +25,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: LoginComponent,
     pathMatch: 'full',
   },
   {
@@ -56,6 +60,10 @@ const routes: Routes = [
         component: AddCategoryComponent,
       },
       {
+        path: 'categories/:categoryId',
+        component: UpdateCategoryComponent,
+      },
+      {
         path: 'exams',
         component: ViewExamsComponent,
       },
@@ -84,7 +92,29 @@ const routes: Routes = [
   {
     path: 'dashboard-user',
     component: DashboardUserComponent,
-    pathMatch: 'full',
+    canActivate: [UserGuard],
+    children: [
+      {
+        path: '',
+        component: WelcomeUserComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: ':categoryId',
+        component: LoadExamComponent,
+      },
+      {
+        path: 'instructions/:examId',
+        component: InstructionsComponent,
+      },
+    ],
+  },
+  {
+    path: 'start/:examId',
+    component: StarExamComponent,
     canActivate: [UserGuard],
   },
 ];

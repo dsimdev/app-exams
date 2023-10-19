@@ -2,11 +2,3 @@
   background-image: url("../../../../assets/images/q&a.png");
   background-size: cover;
 }
-
-.active-button {
-  color: seagreen;
-}
-
-.disabled-button {
-  color: red;
-}

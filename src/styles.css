@@ -44,6 +44,10 @@ body {
   margin-top: 20px !important;
 }
 
+.mt70 {
+  margin-top: 50px !important;
+}
+
 .mb20 {
   margin-bottom: 20px !important;
 }
@@ -60,7 +64,6 @@ body {
   width: 100% !important;
 }
 
-.text-right{
+.text-right {
   text-align: right;
 }
-

@@ -27,4 +27,16 @@ export class ExamService {
   public updateExam(exam: any) {
     return this.http.put(`${appUrl}/exams`, exam);
   }
+
+  public listExamsByCategory(categoryId: any) {
+    return this.http.get(`${appUrl}/exams/category/${categoryId}`);
+  }
+
+  public listExamsEnabled() {
+    return this.http.get(`${appUrl}/exams/enabled`);
+  }
+
+  public listExamsByCategoryAndEnabled(categoryId: any) {
+    return this.http.get(`${appUrl}/exams/enabled/${categoryId}`);
+  }
 }

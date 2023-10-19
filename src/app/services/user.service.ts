@@ -11,4 +11,12 @@ export class UserService {
   public addUser(user: any) {
     return this.httpClient.post(`${authUrl}/users`, user);
   }
+
+  public updateUser(user: any) {
+    return this.httpClient.put(`${authUrl}/users`, user);
+  }
+
+  public getUser(userId: any) {
+    return this.httpClient.get(`${authUrl}/users/${userId}`);
+  }
 }
