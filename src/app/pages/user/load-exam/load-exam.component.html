@@ -1,0 +1,68 @@
+<div *ngIf="exams.length > 0">
+  <mat-card>
+    <h1><mat-icon mat-list-icon>quiz</mat-icon> Exams</h1>
+    <mat-card-subtitle> Count: {{ exams.length }} </mat-card-subtitle>
+    <div class="bootstrap-wrapper">
+      <div class="container-fluid">
+        <div class="row mt20" *ngIf="exams">
+          <div class="col-md-6" *ngFor="let e of exams">
+            <mat-card class="mb20">
+              <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>
+                  {{ e.title }}
+                </mat-card-title>
+                <mat-card-subtitle>
+                  {{ e.category.title }}
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                <p>{{ e.description }}</p>
+              </mat-card-content>
+
+              <mat-card-actions class="text-center">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <button mat-button color="accent" class="mb20">
+                        See
+                      </button>
+                      <button
+                        mat-button
+                        color="primary"
+                        [routerLink]="
+                          '/dashboard-user/instructions/' + e.examId
+                        "
+                      >
+                        Start
+                      </button>
+                    </div>
+                    <div class="col-md-7">
+                      <button mat-stroked-button color="accent" class="mb20">
+                        Questions: {{ e.cantQuestions }}
+                      </button>
+                      <button mat-stroked-button color="accent">
+                        M.P: {{ e.maxPoints }}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+<div class="col-md-12" *ngIf="exams.length == 0">
+  <mat-card>
+    <mat-card-content>
+      <h2>
+        There is no exams availables in this category, please try again in
+        another moment or contact the system administrator. Thank you.
+      </h2>
+    </mat-card-content>
+  </mat-card>
+</div>

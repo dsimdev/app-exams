@@ -1,0 +1,28 @@
+<mat-card>
+  <h1><mat-icon mat-list-icon>home</mat-icon> Home</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card-header>
+          <mat-card-title>
+            Welcome {{ user.name | titlecase }} {{ user.lastName | titlecase }}
+          </mat-card-title>
+          <mat-card-subtitle>Admin Panel</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <h1></h1>
+          <p></p>
+          <mat-divider></mat-divider>
+          <br />
+          <h1>Your functions:</h1>
+          <ul>
+            <li>Manage categories</li>
+            <li>Manage exams</li>
+            <li>Manage users</li>
+            <li>View results</li>
+          </ul>
+        </mat-card-content>
+      </div>
+    </div>
+  </div>
+</mat-card>

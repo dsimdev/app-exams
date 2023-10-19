@@ -1,0 +1,113 @@
+<mat-card>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>
+        <mat-icon mat-list-icon>add</mat-icon> Update Question
+      </h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button (click)="cancel()" mat-stroked-button color="accent">
+        Go Back
+      </button>
+    </div>
+  </div>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form *ngIf="exam" (submit)="updateExam()">
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Title</mat-label>
+            <input
+              required
+              autofocus
+              [(ngModel)]="exam.title"
+              type="text"
+              matInput
+              placeholder="Enter the title"
+              name="title"
+            />
+          </mat-form-field>
+          <mat-form-field class="w100" appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea
+              [(ngModel)]="exam.description"
+              type="text"
+              matInput
+              placeholder="Enter the description"
+              name="description"
+              rows="8"
+            ></textarea>
+          </mat-form-field>
+
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Max Points</mat-label>
+                <input
+                  [(ngModel)]="exam.maxPoints"
+                  type="text"
+                  matInput
+                  placeholder="Enter the max points"
+                  name="maxPoints"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field class="w100" appearance="fill">
+                <mat-label>Questions</mat-label>
+                <input
+                  [(ngModel)]="exam.cantQuestions"
+                  type="text"
+                  matInput
+                  placeholder="Enter the quantity of questions inside the exam"
+                  name="cantQuestions"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+
+          <mat-slide-toggle
+            class="mt20"
+            [(ngModel)]="exam.enabled"
+            color="primary"
+            name="enabled"
+          >
+            Status
+          </mat-slide-toggle>
+          <mat-form-field appearance="fill" class="mt20 w100">
+            <mat-label>Categories</mat-label>
+            <mat-select name="category" [(ngModel)]="exam.category.categoryId">
+              <mat-option *ngFor="let c of categories" [value]="c.categoryId">
+                {{ c.title }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-md-12">
+                <button mat-raised-button color="primary">Update</button>
+                <button
+                  type="reset"
+                  mat-raised-button
+                  color="accent"
+                  class="ml20"
+                >
+                  Clear
+                </button>
+                <button
+                  mat-flat-button
+                  color="warn"
+                  class="ml20"
+                  (click)="deleteExam(exam.examId)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

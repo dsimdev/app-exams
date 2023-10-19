@@ -1,0 +1,128 @@
+<mat-card>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>
+        <mat-icon mat-list-icon>add</mat-icon> Update Question
+        <h3>
+          in <span style="font-weight: bold">{{ question.exam.title }}</span>
+        </h3>
+      </h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button (click)="cancel()" mat-stroked-button color="accent">
+        Go Back
+      </button>
+    </div>
+  </div>
+  <div class="bootstrap-wrapper">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card>
+          <mat-card-content>
+            <form
+              class="mt20"
+              *ngIf="question"
+              (ngSubmit)="updateQuestionData()"
+            >
+              <mat-form-field class="w100">
+                <mat-label>Enter the question content</mat-label>
+                <textarea
+                  name="content"
+                  [(ngModel)]="question.content"
+                  autofocus
+                  rows="5"
+                  matInput
+                  placeholder="Write here"
+                ></textarea>
+              </mat-form-field>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="w100">
+                    <mat-label>Enter Option 1</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      name="option1"
+                      [(ngModel)]="question.option1"
+                    />
+                  </mat-form-field>
+                  <mat-form-field class="w100">
+                    <mat-label>Enter Option 2</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      name="option2"
+                      [(ngModel)]="question.option2"
+                    />
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="w100">
+                    <mat-label>Enter Option 3</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      name="option3"
+                      [(ngModel)]="question.option3"
+                    />
+                  </mat-form-field>
+                  <mat-form-field class="w100">
+                    <mat-label>Enter Option 4</mat-label>
+                    <input
+                      type="text"
+                      matInput
+                      name="option4"
+                      [(ngModel)]="question.option4"
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <mat-form-field class="w100">
+                <mat-label>Select the correct answer</mat-label>
+                <mat-select [(ngModel)]="question.answer" name="answer">
+                  <mat-option
+                    *ngIf="question.option1"
+                    [value]="question.option1"
+                    >{{ question.option1 }}</mat-option
+                  >
+                  <mat-option
+                    *ngIf="question.option2"
+                    [value]="question.option2"
+                    >{{ question.option2 }}</mat-option
+                  >
+                  <mat-option
+                    *ngIf="question.option3"
+                    [value]="question.option3"
+                    >{{ question.option3 }}</mat-option
+                  >
+                  <mat-option
+                    *ngIf="question.option4"
+                    [value]="question.option4"
+                    >{{ question.option4 }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+
+              <div class="container text-center">
+                <div class="row">
+                  <div class="col-md-12">
+                    <button mat-raised-button color="primary">Add</button>
+                    <button
+                      type="reset"
+                      mat-raised-button
+                      color="accent"
+                      class="ml20"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</mat-card>

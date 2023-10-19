@@ -1,0 +1,65 @@
+<mat-card>
+  <div class="row">
+    <div class="col-md-8">
+      <h1>
+        <mat-icon mat-list-icon>add_circle_outline</mat-icon> Add Category
+      </h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <button (click)="cancel()" mat-stroked-button color="accent">
+        Go Back
+      </button>
+    </div>
+  </div>
+
+  <mat-card-content>
+    <div class="bootstrap-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <form (ngSubmit)="formSubmit()">
+              <mat-form-field class="w100" appearance="outline">
+                <mat-label>Title</mat-label>
+                <input
+                  required
+                  type="text"
+                  autofocus
+                  name="title"
+                  matInput
+                  placeholder="Enter the category title's"
+                  [(ngModel)]="category.title"
+                />
+              </mat-form-field>
+              <mat-form-field class="w100" appearance="outline">
+                <mat-label>Description</mat-label>
+                <textarea
+                  required
+                  name="description"
+                  matInput
+                  placeholder="Enter the category description's"
+                  rows="15"
+                  [(ngModel)]="category.description"
+                ></textarea>
+              </mat-form-field>
+              <div class="container text-center mt15">
+                <div class="row">
+                  <div class="col-md-12">
+                    <button mat-raised-button color="primary">Create</button>
+                    <button
+                      class="ml20"
+                      type="reset"
+                      mat-raised-button
+                      color="accent"
+                    >
+                      Clear
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

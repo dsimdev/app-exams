@@ -1,0 +1,129 @@
+<div class="bootstrap-wrapper" *ngIf="!isSended">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2">
+        <!--Instructions-->
+        <mat-card class="mt70">
+          <mat-card-content>
+            <h3><b>Instructions</b></h3>
+            <ul>
+              <li>Don't refresh the page</li>
+              <li>Don't change the tab</li>
+              <li>Don't minimize the window</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-md-7">
+        <!--Questions-->
+        <ng-container *ngIf="questions">
+          <h1>
+            <b>{{ questions[0].exam.title }}</b>
+          </h1>
+        </ng-container>
+        <mat-card *ngFor="let q of questions; let i = index" class="mb20">
+          <mat-card-content>
+            <p>
+              <b>{{ i + 1 }}) </b
+              ><span [innerHTML]="q.content">{{ q.content }}</span>
+            </p>
+            <mat-divider></mat-divider>
+            <div class="row mt20">
+              <div class="col-md-7 mt10">
+                <input
+                  [(ngModel)]="q.givenAnswer"
+                  type="radio"
+                  [value]="q.option1"
+                  name="{{ i }}"
+                />
+                {{ q.option1 }}
+              </div>
+              <div class="col-md-7 mt10">
+                <input
+                  [(ngModel)]="q.givenAnswer"
+                  type="radio"
+                  [value]="q.option2"
+                  name="{{ i }}"
+                />
+                {{ q.option2 }}
+              </div>
+              <div class="col-md-7 mt10">
+                <input
+                  [(ngModel)]="q.givenAnswer"
+                  type="radio"
+                  [value]="q.option3"
+                  name="{{ i }}"
+                />
+                {{ q.option3 }}
+              </div>
+              <div class="col-md-7 mt10">
+                <input
+                  [(ngModel)]="q.givenAnswer"
+                  type="radio"
+                  [value]="q.option4"
+                  name="{{ i }}"
+                />
+                {{ q.option4 }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6"></div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        <div class="container text-center mt20 mb20">
+          <button mat-raised-button color="primary" (click)="formSubmit()">
+            Send Exam
+          </button>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <mat-card class="mt70">
+          <mat-card-header>
+            <mat-card-title>Time left</mat-card-title>
+            <mat-card-subtitle>
+              The exam will be send automatically when the temporizer finish
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <h1 class="text-center">{{ getFormatTime() }}</h1>
+            <mat-spinner
+              mode="determinate"
+              style="margin: auto"
+              [value]="(timer / (this.questions.length * 60)) * 100"
+            ></mat-spinner>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bootstrap-wrapper" *ngIf="isSended">
+  <div class="container mt20">
+    <div class="col-md-6 offset-md-3">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Your results </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="text-center">
+          <h1>Points: {{ points }}</h1>
+          <h1>Correct Answers: {{ correctAnswers }}</h1>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <button mat-raised-button color="primary" (click)="print()">
+            Print
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+            [routerLink]="'/dashboard-user'"
+          >
+            Home
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
